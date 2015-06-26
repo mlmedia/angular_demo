@@ -1,2 +1,2 @@
 # angular_demo
-Demo using AngularJS
+Demo using AngularJS found at https://docs.angularjs.org/tutorial
