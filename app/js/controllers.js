@@ -16,8 +16,9 @@ phonecatControllers.controller('PhoneListCtrl', function ($scope, $http)
 });
 
 /* controller for detail view */
-phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', function($scope, $routeParams)
-{
-    /* pass route param to $scope */
-    $scope.phoneId = $routeParams.phoneId;
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
+    /* pass data from JSON file to $scope */
+    $http.get('phones/' + $routeParams.phoneId + '.json').success(function(data) {
+        $scope.phone = data;
+    });
 }]);
