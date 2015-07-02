@@ -1,8 +1,8 @@
 /* set module object */
-var phonecatApp = angular.module('phonecatApp', []);
+var phonecatControllers = angular.module('phonecatControllers', []);
 
-/* controller */
-phonecatApp.controller('PhoneListCtrl', function ($scope, $http)
+/* controller for list view*/
+phonecatControllers.controller('PhoneListCtrl', function ($scope, $http)
 {
     /* pass data from JSON file pulled from HTTP request to $scope */
     $http.get('phones/phones.json').success(function(data)
@@ -14,3 +14,10 @@ phonecatApp.controller('PhoneListCtrl', function ($scope, $http)
     /* set default order */
     $scope.orderProp = 'age';
 });
+
+/* controller for detail view */
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', function($scope, $routeParams)
+{
+    /* pass route param to $scope */
+    $scope.phoneId = $routeParams.phoneId;
+}]);
