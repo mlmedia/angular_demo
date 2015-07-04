@@ -16,9 +16,21 @@ phonecatControllers.controller('PhoneListCtrl', function ($scope, $http)
 });
 
 /* controller for detail view */
-phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
-    /* pass data from JSON file to $scope */
-    $http.get('phones/' + $routeParams.phoneId + '.json').success(function(data) {
-        $scope.phone = data;
-    });
-}]);
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$http',
+    function($scope, $routeParams, $http) {
+        /* pass data from JSON file to $scope */
+        $http.get('phones/' + $routeParams.phoneId + '.json').success(function(data) {
+            $scope.phone = data;
+            $scope.mainImageUrl = data.images[0];
+        });
+
+        /* add setImage to $scope for thumbnail switcher */
+        $scope.setImage = function(imageUrl) {
+            $scope.mainImageUrl = imageUrl;
+        };
+
+        $scope.hello = function(name) {
+            alert('Hello ' + (name || 'world') + '!');
+        }
+    }
+]);
