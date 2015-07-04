@@ -1,7 +1,8 @@
 /* set module object */
 var phonecatApp = angular.module('phonecatApp', [
     'ngRoute',
-    'phonecatControllers'
+    'phonecatControllers',
+    'phonecatFilters'
 ]);
 
 /* set the routing in the config */
